@@ -13,14 +13,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -48,32 +44,7 @@ public class CartController {
         }
     }
      
-     
-     
-     
-    @PostMapping(value = "/cart/addCart_withfile")
-    @Transactional
-    public ResponseEntity<?> addCart(@ModelAttribute Cart entity, @RequestParam("file") MultipartFile file) {
-        try {
-            String fileName = fileStorageService.storeFile(file);
-            String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(fileName)
-                .toUriString();
-            
-            Session session = sessionFactory.openSession();
-            entity.setImageName(fileName);
-            entity.setImageUri(fileDownloadUri);
-            
-            session.save(entity);
-            session.flush();
-            session.close();
-            return ResponseEntity.ok("Data saved successfully");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.ok("Save failed");
-        }
-    }
+    
     
     
     

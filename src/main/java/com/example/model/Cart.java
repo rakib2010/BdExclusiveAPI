@@ -19,7 +19,6 @@ public class Cart {
     private double price;
     private String remarks;
     private String imageUri;
-    private String imageName;
 
     public long getId() {
         return id;
@@ -69,16 +68,6 @@ public class Cart {
         this.imageUri = imageUri;
     }
 
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-    
-    
-    
-    
+  
     
 }
