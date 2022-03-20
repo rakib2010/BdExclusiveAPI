@@ -2,7 +2,6 @@
 package com.example;
 
 import com.example.model.Cart;
-import com.example.model.Product;
 import com.example.storage.service.FileStorageService;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -66,10 +65,10 @@ public class CartController {
     
     @GetMapping(value = "/cart/delete/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
     @Transactional
-    public ResponseEntity<?> delete(@PathVariable(value = "id") long id) {
+    public ResponseEntity<?> deleteCart(@PathVariable(value = "id") long id) {
         try {
             Session session = sessionFactory.openSession();
-            Product entity = session.get(Product.class, id);
+            Cart entity = session.get(Cart.class, id);
             session.delete(entity);
             session.flush();
             session.close();
