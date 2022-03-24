@@ -177,7 +177,7 @@ public class ProductController {
         }
     }
     
-    @GetMapping(value = "/product/delete/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "/product/delete/{id}")
     @Transactional
     public ResponseEntity<?> delete(@PathVariable(value = "id") long id) {
         try {

@@ -63,7 +63,7 @@ public class CartController {
     
     
     
-    @GetMapping(value = "/cart/delete/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value = "/cart/delete/{id}")
     @Transactional
     public ResponseEntity<?> deleteCart(@PathVariable(value = "id") long id) {
         try {
